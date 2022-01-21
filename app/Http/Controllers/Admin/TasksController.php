@@ -9,11 +9,11 @@ class TasksController extends Controller
 {
     public function showTasks()
     {
-        return view('Admin/Task/tasks');
+        return view('Task/tasks');
     }
 
     public function addTask()
     {
-        return view('Admin/Task/addtask');
+        return view('Task/addtask');
     }
 }
