@@ -21,20 +21,44 @@
         <div class="grid gap-6 xl:grid-cols-2 mb-4 mt-4"> 
             <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Task<label class="text-red-600">*</label></span>
-            <select
+            <select id='purpose'
                     class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                    <option>Office task</option>
-                    <option>Project task</option>
+                    <option selected disabled>Choose a task</option>
+                    <option value="1">Office task</option>
+                    <option value="2">Project task</option>
                 </select>
             </label>
-            <label class="block text-sm">
-            <span class="text-gray-700 dark:text-gray-400">Project<label class="text-red-600">*</label></span>
-            <select
-                    class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                    <option>Sport club management system</option>
-                    <option>Bus ticket booking system</option>
-                </select>
-            </label>
+            <div style='display:none;' id='officeT'>
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Department<label class="text-red-600">*</label></span>
+                <select
+                      class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                      <option disabled selected>Choose a department</option>
+                      <option>IT</option>
+                      <option>HR</option>
+                      <option>Marketting</option>
+                  </select>
+              </label>
+            </div>
+            
+            <div class="grid gap-6 xl:grid-cols-2" id="projectT"> 
+              <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Project<label class="text-red-600">*</label></span>
+              <select
+                      class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                      <option>Sport club management system</option>
+                      <option>Bus ticket booking system</option>
+                  </select>
+              </label>
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Module<label class="text-red-600">*</label></span>
+                <select
+                        class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                        <option>M001-Home-Page-Design</option>
+                        <option>M001-About-Page-Design</option>
+                    </select>
+              </label>
+            </div>
         </div>      
         <div class="grid gap-6 xl:grid-cols-2 mb-4 mt-4"> 
             <label class="block text-sm">

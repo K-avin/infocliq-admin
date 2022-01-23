@@ -9,10 +9,10 @@ class EmployeesController extends Controller
 {
     public function addEmployee()
     {
-        return view('Admin/Employees/addemployee');
+        return view('Employees/addemploye');
     }
     public function showEmployees()
     {
-        return view('Admin/Employees/showemployees');
+        return view('Employees/showemployees');
     }
 }
