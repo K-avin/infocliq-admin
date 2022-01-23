@@ -36,6 +36,7 @@ Route::get('manager/projects', [App\Http\Controllers\Admin\ProjectController::cl
 Route::get('manager/project/details', [App\Http\Controllers\Admin\ProjectController::class, 'showDetails'])->name('view.projectsingleview');
 
 Route::get('manager/addemployee', [App\Http\Controllers\Admin\EmployeesController::class, 'addEmployee'])->name('add.employee');
+Route::post('manager/storeemployee', [App\Http\Controllers\Admin\EmployeesController::class, 'store'])->name('store.employee');
 Route::get('manager/employees', [App\Http\Controllers\Admin\EmployeesController::class, 'showEmployees'])->name('view.employees');
 
 

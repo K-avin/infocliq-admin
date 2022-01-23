@@ -24,13 +24,14 @@ class CreateEmployeeTable extends Migration
             $table->string('city');
             $table->string('address');
             $table->string('gender');
+            $table->string('image');            
             $table->string('status');
             $table->string('date_of_birth');
-            $table->string('position');
+            $table->string('designation');
             $table->string('department');
             $table->string('employment_status');
             $table->string('start_date');
-            $table->string('salary');
+            $table->integer('salary');
             $table->string('bank');
             $table->string('branch');
             $table->string('account_name');
