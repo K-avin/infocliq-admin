@@ -19,10 +19,11 @@
     <!-- Cards -->
     <div class="grid gap-6 mb-8  xl:grid-cols-2">    
       <!-- Card -->
+      @foreach ($projects as $project)
       <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div class="m-1">
-          <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-400">Project : Sports club management system
-            <span class="text-sm text-gray-500 font-mono inline px-2 align-top float-right active:text-red-500 hover:text-red-500 focus:outline-none focus:shadow-outline-red">
+          <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-400">Project : {{$project->project_name}}
+            <span class="text-sm cursor-pointer text-gray-500 font-mono inline px-2 align-top float-right active:text-red-500 hover:text-red-500 focus:outline-none focus:shadow-outline-red">
                 <a href="{{route('view.projectsingleview')}}">
                     <svg
                     class="w-5 h-5"
@@ -42,80 +43,61 @@
            </p>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-s-1 mr-2">:</span>06</p>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Ongoing Modules<span class="mg-s-2 mr-2">:</span>04</p>
-            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Deadline<span class="mg-s-3 mr-2">:</span>2022-02-16</p>
+            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Deadline<span class="mg-s-3 mr-2">:</span>{{$project->due_date}}</p>
             
+            <?php
+                $developers = json_decode($project->developers,true)
+            ?>
             <div class="mb-5">
                 <p class="mb-2 mt-5 text-sm font-medium text-gray-500 dark:text-gray-400">Developers</p>
-                <span class="px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Kabilraj</span>
-                <span class="px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Vinoyan</span>
-                <span class="px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Thusatharan</span>
+                @foreach ($developers as $developer)
+                <span class="px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">{{$developer}}</span>
+                @endforeach
             </div>
         
             <p class="text-md font-medium text-gray-600 dark:text-gray-400">
-                <span class="text-purple-600 inline px-2 align-top float-left py-1-dev-span text-sm font-small">
+                @if ($project->status == 'start')
+                    <span class="text-purple-600 cursor-pointer inline px-2 align-top float-left py-1-dev-span text-sm font-small">
+                        <i class="far fa-play"></i>
+                    </span>
+                @else
+                <span class="inline px-2 cursor-pointer align-top float-left py-1-dev-span text-sm font-small">
                     <i class="far fa-play"></i>
                 </span>
-                <span class="inline px-2 align-top float-left py-1-dev-span text-sm font-small">
-                    <i class="fal fa-pause"></i>
-                </span>
-                <span class="inline px-2 align-top float-left py-1-dev-span text-sm font-small">
-                    <i class="fal fa-trash"></i>
-                </span>
-                <span class="inline px-2 align-top float-left py-1-dev-span text-sm font-small">
-                    <i class="fal fa-edit"></i>
-                </span> 
-                <span class="inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">Compleet</span>
+                @endif
+
+                @if ($project->status == 'on hold')
+                    <span class="text-blue-600 cursor-pointer inline px-2 align-top float-left py-1-dev-span text-sm font-small">
+                        <i class="fal fa-pause"></i>
+                    </span>     
+                @else
+                    <span class="inline cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
+                        <i class="fal fa-pause"></i>
+                    </span>                
+                @endif
+                    
+                    <span class="inline hover:text-red-600 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
+                        <i class="fal fa-trash"></i>
+                    </span>
+                    <span class="inline hover:text-blue-600 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
+                        <i class="fal fa-edit"></i>
+                    </span> 
+                
+                @if ($project->status == 'completed')
+                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                @elseif ($project->status == 'pending')
+                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-orange-700 bg-orange-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                @elseif ($project->status == 'on hold')
+                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-blue-700 bg-blue-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                @elseif ($project->status == 'canceled')
+                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-red-700 bg-red-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                @elseif ($project->status == 'start')
+                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-purple-700 bg-purple-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                @endif
             </p>
         </div>
-      </div>
-      <!-- Card -->
-      <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-        <div class="m-1">
-          <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-400">Project : Sports club management system
-            <span class="text-sm text-gray-500 font-mono inline px-2 align-top float-right active:text-red-500 hover:text-red-500 focus:outline-none focus:shadow-outline-red">
-                    <svg
-                    class="w-5 h-5"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                <path class="animate-pulse" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-            </span>
-           </p>
-            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-s-1 mr-2">:</span>06</p>
-            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Ongoing Modules<span class="mg-s-2 mr-2">:</span>04</p>
-            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Deadline<span class="mg-s-3 mr-2">:</span>2022-02-16</p>
-            
-            <div class="mb-5">
-                <p class="mb-2 mt-5 text-sm font-medium text-gray-500 dark:text-gray-400">Developers</p>
-                <span class="px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Kabilraj</span>
-                <span class="px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Vinoyan</span>
-                <span class="px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Thusatharan</span>
-            </div>
-        
-            <p class="text-md font-medium text-gray-600 dark:text-gray-400">
-                <span class="text-purple-600 inline px-2 align-top float-left py-1-dev-span text-sm font-small">
-                    <i class="far fa-play"></i>
-                </span>
-                <span class="inline px-2 align-top float-left py-1-dev-span text-sm font-small">
-                    <i class="fal fa-pause"></i>
-                </span>
-                <span class="inline px-2 align-top float-left py-1-dev-span text-sm font-small">
-                    <i class="fal fa-trash"></i>
-                </span>
-                <span class="inline px-2 align-top float-left py-1-dev-span text-sm font-small">
-                    <i class="fal fa-edit"></i>
-                </span> 
-                <span class="inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">Compleet</span>
-            </p>
-        </div>
-      </div>
+      </div>          
+      @endforeach
     </div>
 </div>
 @endsection

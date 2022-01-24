@@ -36,6 +36,7 @@
               type="tel"
               name="nic" />
           </label>
+          <div class="grid gap-6 xl:grid-cols-2 mb-4">
           <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Mobile Number</span>
             <input
@@ -44,6 +45,15 @@
               type="tel"
               name="mobile"/>
           </label>
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Email Address</span>
+            <input
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              placeholder="Enter the email address"
+              type="email"
+              name="email"/>
+          </label>
+          </div>
         </div>
         <div class="grid gap-6 xl:grid-cols-2 mb-4">
           <div class="grid gap-6 xl:grid-cols-3">
@@ -289,80 +299,122 @@
 
   <div class="items-center p-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
     {{-- User Account --}}
-    <div class="bank-section ">
-      <p class="mb-3 mt-3 text-2md font-semibold text-gray-500 dark:text-gray-200">User Account Details </p>
-      <div class="grid gap-6 xl:grid-cols-2 mb-4">
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">User Name</span>
-          <input
-            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-            placeholder="Enter the user name" type="text" />
-        </label>
+    <form method="post" action="{{ route('register') }}">
+      @csrf
+      <div class="bank-section ">
+        <p class="mb-3 mt-3 text-2md font-semibold text-gray-500 dark:text-gray-200">User Account Details </p>
+        <div class="grid gap-6 xl:grid-cols-2 mb-4">
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">User Name</span>
+            <input
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              placeholder="Enter the user name" type="text"
+              name="name"
+              value="{{ old('name') }}"
+              required
+              autocomplete="name"
+              autofocus
+              @error('name')  border-red-500 @enderror />
+              @error('name')
+                <p class="text-red-500 text-xs italic mt-4">
+                  {{ $message }}
+                </p>
+              @enderror
+          </label>
 
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">Email</span>
-          <input
-            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-            placeholder="Enter the user email" type="email" />
-        </label>
-      </div>
-      <div class="grid gap-6 xl:grid-cols-2 mb-4">
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">User Role</span>
-          <select
-            class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:focus:shadow-outline-gray">
-            <option disabled selected>--- Select ---</option>
-            <option value="developer">Developer</option>
-            <option value="pm">PM</option>
-            <option value="hr">HR</option>
-          </select>
-        </label>
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Email</span>
+            <input
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              placeholder="Enter the user email" type="email"
+              @error('email') border-red-500 @enderror
+              name="email"
+              value="{{ old('email') }}"
+              required autocomplete="email"/>
+              @error('email')
+                <p class="text-red-500 text-xs italic mt-4">
+                  {{ $message }}
+                </p>
+              @enderror
+          </label>
+        </div>
+        <div class="grid gap-6 xl:grid-cols-2 mb-4">
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">User Role</span>
+            <select
+            name="role"
+              class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:focus:shadow-outline-gray">
+              <option disabled selected>--- Select ---</option>
+              <option value="developer">Developer</option>
+              <option value="pm">PM</option>
+              <option value="hr">HR</option>
+            </select>
+          </label>
 
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">Passwod</span>
-          <div class="flex items-center">
-            <input id="password" readonly
-              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input rounded-r-none"
-              type="text" placeholder="Generate the password" aria-label="Full name">
-            <button id="button" onclick="genPassword()"
-              class="dark:border-gray-600 dark:bg-gray-700 flex-shrink-0 form-input rounded-l-none rounded-r-none border-l-0 border-r-0 text-sm text-red-500 py-2 mt-1 px-2"
-              type="button">
-              Generate
-            </button>
-            <button id="button" onclick="copyPassword()"
-              class="dark:border-gray-600 dark:bg-gray-700 flex-shrink-0 form-input rounded-l-none text-sm text-red-500 py-2 mt-1 px-2"
-              type="button">
-              Copy
-            </button>
-          </div>
-        </label>
-      </div>
-    </div>      
-    <div class="flex mt-4 mb-2 flex-col flex-wrap space-y-2 md:flex-row md:items-end md:space-x-4">
-      <!-- Divs are used just to display the examples. Use only the button. -->
-      <div>
-        <button
-          class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-green-600 transition-colors duration-150  border border-green-600 rounded-md active:bg-green-700 active:text-white hover:bg-green-600 hover:text-white focus:outline-none focus:shadow-outline-gray">
-          <span>Create</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 -mr-1" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-        </button>
-      </div>
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Passwod</span>
+            <div class="flex items-center">
+              <input id="password" readonly
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input rounded-r-none"
+                type="text" placeholder="Generate the password" aria-label="Full name"
+                @error('password') border-red-500 @enderror
+                name="password"
+                required 
+                autocomplete="new-password"> 
 
-      <!-- Divs are used just to display the examples. Use only the button. -->
-      <div>
-        <button
-          class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-red-600 transition-colors duration-150  border border-red-600 rounded-md active:red-green-700 active:text-white hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline-gray">
-          <span>Cancel</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 -mr-1" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+                <input id="password_confirmation" 
+                class="hidden w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input rounded-r-none"
+                type="text" placeholder="Generate the password" aria-label="Full name"
+                @error('password') border-red-500 @enderror
+                required 
+                name="password_confirmation"
+                autocomplete="new-password">                
+              <button id="button" onclick="genPassword()"
+                class="dark:border-gray-600 dark:bg-gray-700 flex-shrink-0 form-input rounded-l-none rounded-r-none border-l-0 border-r-0 text-sm text-red-500 py-2 mt-1 px-2"
+                type="button">
+                Generate
+              </button>
+              <button id="button" onclick="copyPassword()"
+                class="dark:border-gray-600 dark:bg-gray-700 flex-shrink-0 form-input rounded-l-none text-sm text-red-500 py-2 mt-1 px-2"
+                type="button">
+                Copy
+              </button>
+              @error('password')
+                  <p class="text-red-500 text-xs italic mt-4">
+                    {{ $message }}
+                  </p>
+                @enderror
+            </div>
+          </label>
+        </div>
+      </div>      
+      <div class="flex mt-4 mb-2 flex-col flex-wrap space-y-2 md:flex-row md:items-end md:space-x-4">
+        <!-- Divs are used just to display the examples. Use only the button. -->
+        <div>
+          <button
+            type="submit"
+            class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-green-600 transition-colors duration-150  border border-green-600 rounded-md active:bg-green-700 active:text-white hover:bg-green-600 hover:text-white focus:outline-none focus:shadow-outline-gray">
+            <span>Create</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 -mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Divs are used just to display the examples. Use only the button. -->
+        <div>
+          <button
+            class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-red-600 transition-colors duration-150  border border-red-600 rounded-md active:red-green-700 active:text-white hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline-gray">
+            <span>Cancel</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 -mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 
 

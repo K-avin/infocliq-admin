@@ -62,8 +62,8 @@
                 </div>
                 <div>
                   <p class="font-semibold">{{$employee->first_name}} {{$employee->last_name}}</p>
-                  <p class="text-xs text-gray-600 dark:text-gray-400">
-                    10x Developer
+                  <p class="text-xs text-gray-600 dark:text-gray-400 lowercase">
+                    {{$employee->email}}
                   </p>
                 </div>
               </div>

@@ -49,6 +49,7 @@ class EmployeesController extends Controller
             'status'        =>  $input['status'],
             'date_of_birth' =>  $input['dob'],
             'image'         =>  $image_path,
+            'email'         =>  $input['email'],
             'designation'      =>  $input['designation'],
             'department'    =>  $input['department'],
             'employment_status' =>  $input['estatus'],
@@ -60,6 +61,6 @@ class EmployeesController extends Controller
             'account_number'=>  $input['accountnumber'],
         ]);
 
-        return ["result" => $image_path];
+        return back()->with('success', 'Staff has successfully ceeated!');
     }
 }

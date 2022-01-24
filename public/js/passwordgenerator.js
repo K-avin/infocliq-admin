@@ -9,6 +9,7 @@ function genPassword() {
         password += chars.substring(randomNumber, randomNumber + 1);
     }
     document.getElementById("password").value = password;
+    document.getElementById("password_confirmation").value = password;
 }
 
 function copyPassword() {
