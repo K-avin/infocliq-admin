@@ -10,10 +10,81 @@
     margin-left: 80px;
 }
 
+
+/*  */
+
+.mg-sd-1 {
+    margin-left: 48px;
+}
+
+.mg-sd-2 {
+    margin-left: 32px;
+}
+
+.mg-sd-3 {
+    margin-left: 80px;
+}
+
+
+/*  */
+
+.mg-st-1 {
+    margin-left: 18px;
+}
+
+.mg-st-2 {
+    margin-left: 12px;
+}
+
+
+/*  */
+
 .py-1-dev-span {
     padding: 1px 10px 1px 10px;
 }
 
+.py-1-task-span {
+    padding: 1px 8px 1px 8px;
+}
+
 td {
     text-transform: capitalize;
+}
+
+
+/*  */
+
+.text-limite-line-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.text-limite-line-1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+
+/*  */
+
+.active-note {
+    font-size: 5px;
+    margin-left: -3px;
+}
+
+
+/* Custoomize Tailwind */
+
+.h-50 {
+    height: 12.4rem;
 }

@@ -18,9 +18,11 @@ class ProjectController extends Controller
         // dd($projects);
         return view('Project/showprojects', compact('projects'));
     }
-    public function showDetails()
+    public function showDetails($id)
     {
-        return view('Project/singleview');
+        $project = Project::find($id);
+        // dd($project);
+        return view('Project/singleview', compact('project'));
     }
     
     /**
@@ -50,5 +52,30 @@ class ProjectController extends Controller
         ]);
 
         return back()->with('success', 'project has successfully ceeated!');
+    }
+
+    public function editProject($id){
+        $project = Project::find($id);
+        return view('Project/edit', compact('project'));
+    }
+
+    public function update(Request $request, $id){
+        $projectUpdate = Project::find($id);
+        $projectUpdate->update($request->all());
+
+        return back()->with('success', 'project has successfully ceeated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $project = Project::find($id);
+        $project->delete();   
+        return back()->with('success', 'Project has successfully deleted!'); 
     }
 }

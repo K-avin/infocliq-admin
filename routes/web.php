@@ -40,7 +40,10 @@ Route::get('manager/modules', [App\Http\Controllers\Admin\ModuleController::clas
 Route::get('manager/addproject', [App\Http\Controllers\Admin\ProjectController::class, 'addProject'])->name('add.project');
 Route::post('manager/storeproject', [App\Http\Controllers\Admin\ProjectController::class, 'store'])->name('store.project');
 Route::get('manager/projects', [App\Http\Controllers\Admin\ProjectController::class, 'showProjects'])->name('view.projects');
-Route::get('manager/project/details', [App\Http\Controllers\Admin\ProjectController::class, 'showDetails'])->name('view.projectsingleview');
+Route::get('manager/project/details/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'showDetails'])->name('view.projectsingleview');
+Route::get('manager/project/edit/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'editProject']);
+Route::post('manager/project/update/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'update']);
+Route::get('manager/project/delete/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'destroy']);
 
 // Employees
 Route::get('manager/addemployee', [App\Http\Controllers\Admin\EmployeesController::class, 'addEmployee'])->name('add.employee');

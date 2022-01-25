@@ -12,12 +12,22 @@
       <!-- Card -->
       <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div class="m-1">
-          <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-300">Project : Sports club management system
-            <span class="inline px-2 align-top float-right text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">Compleet</span>
+          <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-300">Project : {{$project->project_name}}
+            @if ($project->status == 'completed')
+              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+            @elseif ($project->status == 'pending')
+              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-orange-700 bg-orange-100 dark:bg-orange-700 dark:text-orange-100">{{$project->status}}</span>
+            @elseif ($project->status == 'start')
+              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-purple-700 bg-purple-100 dark:bg-purple-700 dark:text-purple-100">{{$project->status}}</span>
+            @elseif ($project->status == 'on hold')
+              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-blue-700 bg-blue-100 dark:bg-blue-700 dark:text-blue-100">{{$project->status}}</span>
+            @elseif ($project->status == 'canceled')
+              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-red-700 bg-red-100 dark:bg-red-700 dark:text-red-100">{{$project->status}}</span>
+            @endif
           </p>
-            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-s-1 mr-2">:</span>06</p>
-            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Project Manager<span class="mg-s-2 mr-2">:</span>04</p>
-            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Deadline<span class="mg-s-3 mr-2">:</span>2022-02-16</p>            
+            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-sd-1 mr-2">:</span>06</p>
+            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Project Manager<span class="mg-sd-2 mr-2">:</span>04</p>
+            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Deadline<span class="mg-sd-3 mr-2">:</span>{{$project->due_date}}</p>            
         </div>
       </div>
     </div>
@@ -25,10 +35,13 @@
     <div class="grid gap-6 mb-8  xl:grid-cols-1">  
         <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="m-1">
+              <?php
+                $developers = json_decode($project->developers,true)
+              ?>
                 <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-300">Developers</p>
-                <span class="dark:text-gray-400 px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Kabilraj</span>
-                <span class="dark:text-gray-400 px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Vinoyan</span>
-                <span class="dark:text-gray-400 px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">Thusatharan</span>           
+                @foreach ($developers as $developer)
+                  <span class="dark:text-gray-400 px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">{{$developer}}</span>                    
+                @endforeach                          
             </div>
         </div>
     </div>

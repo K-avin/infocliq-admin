@@ -7,7 +7,7 @@
       All Projects
     </h2>
     {{-- add Projects --}}
-    <a href="{{route('add.project')}}" class="dark:bg-gray-800 dark:text-gray-400 dark:border-gray-800 flex items-center justify-between p-4 mb-8 text-sm font-semibold bg-white text-gray-600 border-gray-200 border rounded-lg shadow-sm focus:outline-none focus:shadow-outline-purple">
+    <a href="{{route('add.project')}}" class="dark:bg-gray-800 dark:text-gray-400 dark:border-gray-800 flex items-center justify-between p-4 mb-8 text-sm font-semibold bg-white text-gray-600 border-gray-200 border rounded-xl focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <svg  xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -20,11 +20,11 @@
     <div class="grid gap-6 mb-8  xl:grid-cols-2">    
       <!-- Card -->
       @foreach ($projects as $project)
-      <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+      <div class="items-center p-4 bg-white rounded-xl shadow-xl dark:bg-gray-800">
         <div class="m-1">
           <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-400">Project : {{$project->project_name}}
-            <span class="text-sm cursor-pointer text-gray-500 font-mono inline px-2 align-top float-right active:text-red-500 hover:text-red-500 focus:outline-none focus:shadow-outline-red">
-                <a href="{{route('view.projectsingleview')}}">
+            <span class="text-sm cursor-pointer text-gray-500 font-mono inline px-2 align-top float-right active:text-red-500 hover:text-red-500 dark:text-red-400 focus:outline-none focus:shadow-outline-red">
+                <a href="{{url('manager/project/details/'.$project->id)}}">
                     <svg
                     class="w-5 h-5"
                     aria-hidden="true"
@@ -75,24 +75,27 @@
                         <i class="fal fa-pause"></i>
                     </span>                
                 @endif
-                    
-                    <span class="inline hover:text-red-600 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
-                        <i class="fal fa-trash"></i>
-                    </span>
-                    <span class="inline hover:text-blue-600 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
-                        <i class="fal fa-edit"></i>
-                    </span> 
+                    <a href="{{url('manager/project/delete/'.$project->id)}}">
+                        <span class="inline hover:text-red-600 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
+                            <i class="fal fa-trash"></i></a>
+                        </span>
+                    </a>
+                    <a href="{{url('manager/project/edit/'.$project->id)}}">
+                        <span class="inline hover:text-blue-600 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
+                            <i class="fal fa-edit"></i>
+                        </span> 
+                    </a>
                 
                 @if ($project->status == 'completed')
-                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                    <span class="capitalize rounded-md inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
                 @elseif ($project->status == 'pending')
-                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-orange-700 bg-orange-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                    <span class="capitalize rounded-md inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-orange-700 bg-orange-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
                 @elseif ($project->status == 'on hold')
-                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-blue-700 bg-blue-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                    <span class="capitalize rounded-md inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-blue-700 bg-blue-100 dark:bg-blue-500 dark:text-blue-100">{{$project->status}}</span>
                 @elseif ($project->status == 'canceled')
-                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-red-700 bg-red-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                    <span class="capitalize rounded-lg inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-red-700 bg-red-100 dark:bg-red-600 dark:text-red-100">{{$project->status}}</span>
                 @elseif ($project->status == 'start')
-                    <span class="capitalize inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-purple-700 bg-purple-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+                    <span class="capitalize rounded-md inline align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-purple-700 bg-purple-100 dark:bg-purple-500 dark:text-purple-100">{{$project->status}}</span>
                 @endif
             </p>
         </div>

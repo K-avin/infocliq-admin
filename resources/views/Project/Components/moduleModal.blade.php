@@ -11,41 +11,21 @@
       class="w-full px-6 py-4 overflow-hidden bg-white rounded-t-lg dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl"
       role="dialog" id="modal">
       <!-- Remove header if you don't want a close icon. Use modal body to place modal tile. -->
-      <header class="flex justify-end">
-        <button
-          class="inline-flex items-center justify-center w-6 h-6 text-gray-400 transition-colors duration-150 rounded dark:hover:text-gray-200 hover: hover:text-gray-700"
-          aria-label="close" @click="closeModal">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" role="img" aria-hidden="true">
-            <path
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clip-rule="evenodd" fill-rule="evenodd"></path>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="w-14 h-14 rounded-2xl p-3 text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-        </button>
-      </header>
-      <!-- Modal body -->
-      <div class="mt-4 mb-6">
-        <!-- Modal title -->
-        <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
-          Add New Module
-        </p>
-        <!-- Modal body -->
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">Module Title</span>
-          <input
-            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-            placeholder="Enter the company name" />
-        </label>
+          <div class="flex flex-col ml-3">
+            <div class="font-medium leading-none dark:text-gray-200">Delete Your Acccount ?</div>
+            <p class="text-sm text-gray-600 leading-none mt-1 dark:text-gray-400">By deleting your account you will lose your all data
+            </p>
+          </div>
+        </div>
+        <button  class="flex-no-shrink bg-red-500 dark:bg-red-600  px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider text-white rounded-full">Delete</button>
       </div>
-      <footer
-        class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
-        <button @click="closeModal"
-          class="w-full px-5 py-3 text-sm font-medium leading-5  text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
-          Cancel
-        </button>
-        <button
-          class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-purple">
-          Create
-        </button>
-      </footer>
     </div>
   </div>
