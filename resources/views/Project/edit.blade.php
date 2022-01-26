@@ -106,7 +106,7 @@
               <span class="text-gray-700 dark:text-gray-400">Project Status</span>
               <select
                 class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:focus:shadow-outline-gray"
-                name="status" value="{{$project->status}}">
+                name="status">
                 <option disabled selected>--- Select ---</option>
                 <option value="start">Start</option>
                 <option value="completed">Completed</option>

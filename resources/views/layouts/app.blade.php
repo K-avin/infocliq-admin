@@ -14,7 +14,7 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="{{ asset('js/passwordgenerator.js') }}" defer></script>
   <script src="{{ asset('js/formF.js') }}" defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 
 
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">

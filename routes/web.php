@@ -23,6 +23,7 @@ Route::get('manager/dashboard', [App\Http\Controllers\Admin\DashboardController:
 
 // Task
 Route::get('manager/addtask', [App\Http\Controllers\Admin\TasksController::class, 'addTask'])->name('add.task');
+Route::post('manager/storetask', [App\Http\Controllers\Admin\TasksController::class, 'store'])->name('store.task');
 Route::get('manager/mytasks', [App\Http\Controllers\Admin\TasksController::class, 'showTasks'])->name('view.tasks');
 
 // Profile
