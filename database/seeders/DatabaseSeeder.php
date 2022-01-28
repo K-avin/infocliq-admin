@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Database\Seeder;
 
@@ -42,16 +43,27 @@ class DatabaseSeeder extends Seeder
             'updated_at' => '2022-01-24 02:35:56',
         ]);
 
-        DB::table('users')->insert([
+        DB::table('users')->insert(
+            [
             'name'    => 'Kavin',
             'email'     => 'kavin@infocliq.com',
-            'role'    => 'Developer',
-            'password' => '12345678',
+            'role'    => 'developer',
+            'password' => Hash::make('12345678'),
             'created_at' => '2022-01-24 02:35:56',
             'updated_at' => '2022-01-24 02:35:56',
-        ]);
+            ],
+            [
+            'name'    => 'Admin',
+            'email'     => 'admin@infocliq.com',
+            'role'    => 'hr',
+            'password' => Hash::make('12345678'),
+            'created_at' => '2022-01-24 02:35:56',
+            'updated_at' => '2022-01-24 02:35:56',
+            ]
+        );
 
-        DB::table('project')->insert([
+        DB::table('project')->insert(
+            [
             'client_name'       => 'Kabilraj',
             'mobile'            => '0776546564',
             'company_name'      => 'infocliq',
@@ -65,9 +77,8 @@ class DatabaseSeeder extends Seeder
             'doc_link'          => 'https://docs.google.com/spreadsheets/d/1_N0fSaDhgRSqq7qVJgZzpGhjBJ6PVCi9JaY6zYS60pg/edit?usp=sharing',
             'developers'        => json_encode(["Kabilraj", "Thasmilan", "Nithusan"]),
             'project_description'=> 'This project infocliq project management system',
-        ]);
-
-        DB::table('project')->insert([
+            ],
+            [
             'client_name'       => 'Kabilraj',
             'mobile'            => '0776546564',
             'company_name'      => 'infocliq',
@@ -81,10 +92,12 @@ class DatabaseSeeder extends Seeder
             'doc_link'          => 'https://docs.google.com/spreadsheets/d/1_N0fSaDhgRSqq7qVJgZzpGhjBJ6PVCi9JaY6zYS60pg/edit?usp=sharing',
             'developers'        => json_encode(["Kabilraj", "Thasmilan", "Nithusan"]),
             'project_description'=> 'This project infocliq project management system',
-        ]);
+            ]
+        );
 
         // Task Datas for develop
-        DB::table('task')->insert([
+        DB::table('task')->insert(
+            [
             'task_name'             => 'infocliq project management system',
             'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
             'task'                  => 'project task',
@@ -97,87 +110,103 @@ class DatabaseSeeder extends Seeder
             'assign_to'             => 2,
             'duration_minutes'      => 67,
             'duration_hours'        => '1h 7m',
-            'priority_level'        => 'Low',
+            'priority_level'        => 'medium',
             'points'                => 5,
             'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
             'note'                  => 'i can\'t complete today. because i work another project',
             'status'                => 'pending',
-        ]);
-        DB::table('task')->insert([
-            'task_name'             => 'infocliq project management system',
-            'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
-            'task'                  => 'project task',
-            'project_id'               => 2,
-            'module'                => 1,
-            'department'            => 'it',
-            'task_type'             => 'development',
-            'due_date'              => '28-01-2022',
-            'assign'                => 2,
-            'assign_to'             => 1,
-            'duration_minutes'      => 127,
-            'duration_hours'        => '2h 7m',
-            'priority_level'        => 'Low',
-            'points'                => 5,
-            'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
-            'note'                  => 'i can\'t complete today. because i work another project',
-            'status'                => 'pending',
-        ]);
-        DB::table('task')->insert([
-            'task_name'             => 'infocliq project management system',
-            'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
-            'task'                  => 'project task',
-            'project_id'               => 3,
-            'module'                => 2,
-            'department'            => 'it',
-            'task_type'             => 'development',
-            'due_date'              => '28-01-2022',
-            'assign'                => 2,
-            'assign_to'             => 1,
-            'duration_minutes'      => 129,
-            'duration_hours'        => '2h 9m',
-            'priority_level'        => 'Low',
-            'points'                => 5,
-            'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
-            'note'                  => 'i can\'t complete today. because i work another project',
-            'status'                => 'pending',
-        ]);
-        DB::table('task')->insert([
-            'task_name'             => 'infocliq project management system',
-            'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
-            'task'                  => 'project task',
-            'project_id'               => 3,
-            'module'                => 2,
-            'department'            => 'it',
-            'task_type'             => 'development',
-            'due_date'              => '28-01-2022',
-            'assign'                => 2,
-            'assign_to'             => 1,
-            'duration_minutes'      => 129,
-            'duration_hours'        => '2h 9m',
-            'priority_level'        => 'Low',
-            'points'                => 5,
-            'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
-            'note'                  => 'i can\'t complete today. because i work another project',
-            'status'                => 'pending',
-        ]);
-        DB::table('task')->insert([
-            'task_name'             => 'infocliq project management system',
-            'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
-            'task'                  => 'project task',
-            'project_id'               => 3,
-            'module'                => 2,
-            'department'            => 'it',
-            'task_type'             => 'development',
-            'due_date'              => '28-01-2022',
-            'assign'                => 2,
-            'assign_to'             => 1,
-            'duration_minutes'      => 129,
-            'duration_hours'        => '2h 9m',
-            'priority_level'        => 'Low',
-            'points'                => 5,
-            'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
-            'note'                  => 'i can\'t complete today. because i work another project',
-            'status'                => 'pending',
-        ]);
+            ],
+            [
+                'task_name'             => 'infocliq project management system',
+                'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
+                'task'                  => 'project task',
+                'project_id'               => 2,
+                'module'                => 1,
+                'department'            => 'it',
+                'task_type'             => 'development',
+                'due_date'              => '28-01-2022',
+                'assign'                => 2,
+                'assign_to'             => 1,
+                'duration_minutes'      => 127,
+                'duration_hours'        => '2h 7m',
+                'priority_level'        => 'high',
+                'points'                => 5,
+                'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
+                'note'                  => 'i can\'t complete today. because i work another project',
+                'status'                => 'pending',
+            ],
+            [
+                'task_name'             => 'infocliq project management system',
+                'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
+                'task'                  => 'project task',
+                'project_id'               => 3,
+                'module'                => 2,
+                'department'            => 'it',
+                'task_type'             => 'development',
+                'due_date'              => '28-01-2022',
+                'assign'                => 2,
+                'assign_to'             => 1,
+                'duration_minutes'      => 129,
+                'duration_hours'        => '2h 9m',
+                'priority_level'        => 'medium',
+                'points'                => 5,
+                'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
+                'note'                  => 'i can\'t complete today. because i work another project',
+                'status'                => 'pending',
+                ],
+                [
+                    'task_name'             => 'infocliq project management system',
+                    'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
+                    'task'                  => 'project task',
+                    'project_id'               => 3,
+                    'module'                => 2,
+                    'department'            => 'it',
+                    'task_type'             => 'development',
+                    'due_date'              => '28-01-2022',
+                    'assign'                => 2,
+                    'assign_to'             => 1,
+                    'duration_minutes'      => 129,
+                    'duration_hours'        => '2h 9m',
+                    'priority_level'        => 'high',
+                    'points'                => 5,
+                    'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
+                    'note'                  => 'i can\'t complete today. because i work another project',
+                    'status'                => 'pending',
+                    ],
+                    [
+                    'task_name'             => 'infocliq project management system',
+                    'description'   => 'Design navigation bar and login page in home page, login page create on home main banner',
+                    'task'                  => 'project task',
+                    'project_id'               => 3,
+                    'module'                => 2,
+                    'department'            => 'it',
+                    'task_type'             => 'development',
+                    'due_date'              => '28-01-2022',
+                    'assign'                => 2,
+                    'assign_to'             => 1,
+                    'duration_minutes'      => 129,
+                    'duration_hours'        => '2h 9m',
+                    'priority_level'        => 'low',
+                    'points'                => 5,
+                    'attachment'            => 'imgEmployee/JXLKigEP_400x400.jpg',
+                    'note'                  => 'i can\'t complete today. because i work another project',
+                    'status'                => 'pending',
+                    ]
+                );
+        // 
+        DB::table('module')->insert(
+            [
+            'projectId'             => 2,
+            'moduleName'            => 'M001-home-page',
+            ],
+            [
+            'projectId'             => 2,
+            'moduleName'            => 'M001-about-page',
+            ],
+            [
+            'projectId'             => 2,
+            'moduleName'            => 'M001-contact-page',
+            ]
+    );
     }
 }

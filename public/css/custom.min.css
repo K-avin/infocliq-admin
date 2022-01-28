@@ -83,6 +83,20 @@ td {
 }
 
 
+/*  */
+
+.w-tx-box {
+    width: 26rem;
+}
+
+
+/*  */
+
+.position-tag {
+    font-size: 10px;
+}
+
+
 /* Custoomize Tailwind */
 
 .h-50 {

@@ -14,15 +14,15 @@
         <div class="m-1">
           <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-300">Project : {{$project->project_name}}
             @if ($project->status == 'completed')
-              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">{{$project->status}}</span>
+              <span class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">Completed</span>
             @elseif ($project->status == 'pending')
-              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-orange-700 bg-orange-100 dark:bg-orange-700 dark:text-orange-100">{{$project->status}}</span>
-            @elseif ($project->status == 'start')
-              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-purple-700 bg-purple-100 dark:bg-purple-700 dark:text-purple-100">{{$project->status}}</span>
+              <span class="capitalize inline  rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-orange-700 bg-orange-100 dark:bg-orange-500 dark:text-orange-100">{{$project->status}}</span>
             @elseif ($project->status == 'on hold')
-              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-blue-700 bg-blue-100 dark:bg-blue-700 dark:text-blue-100">{{$project->status}}</span>
+              <span class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-blue-700 bg-blue-100 dark:bg-blue-500 dark:text-blue-100">{{$project->status}}</span>
             @elseif ($project->status == 'canceled')
-              <span class="inline capitalize px-2 align-top float-right text-sm font-small leading-tight text-red-700 bg-red-100 dark:bg-red-700 dark:text-red-100">{{$project->status}}</span>
+              <span class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-red-700 bg-red-100 dark:bg-red-600 dark:text-red-100">{{$project->status}}</span>
+            @elseif ($project->status == 'start')
+              <span class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-purple-700 bg-purple-100 dark:bg-purple-100 dark:text-purple-100">{{$project->status}}</span>
             @endif
           </p>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-sd-1 mr-2">:</span>06</p>
@@ -45,8 +45,9 @@
             </div>
         </div>
     </div>
+    
     {{-- add module --}}
-    <a class="dark:bg-gray-800 dark:text-gray-400 dark:border-gray-800 flex items-center justify-between p-4 mb-8 text-sm font-semibold bg-white text-gray-600 border-gray-200 border rounded-lg shadow-sm focus:outline-none focus:shadow-outline-purple"
+    <a class="dark:bg-gray-800 cursor-pointer dark:text-gray-400 dark:border-gray-800 flex items-center justify-between p-4 mb-8 text-sm font-semibold bg-white text-gray-600 border-gray-200 border rounded-lg shadow-sm focus:outline-none focus:shadow-outline-purple"
     @click="openModal">
             <div class="flex items-center">
               <svg  xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

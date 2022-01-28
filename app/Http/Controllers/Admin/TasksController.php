@@ -11,6 +11,12 @@ use DB;
 
 class TasksController extends Controller
 {
+    public function taskHome()
+    {
+        $tasks = Task::all();
+        return view('Profile.mytasks',compact('tasks'));
+    }
+
     public function showTasks()
     {               
     //    $tasks = DB::table('project')->select('*')->join('task','project.id','=','task.project' )->get();
@@ -19,12 +25,12 @@ class TasksController extends Controller
     // $i = 0;
     $projects = Project::select('id','project_name')->get();
    
-    foreach($projects as $project){
-        $p_n[] = $project;
-        // $i++;
-    };
+    // foreach($projects as $project){
+    //     $p_n[] = $project;
+    //     // $i++;
+    // };
     // dd($p_n);
-        return view('Task/tasks', compact('tasks','p_n'));
+        return view('Task/tasks', compact('tasks'));
     }
 
     public function addTask()

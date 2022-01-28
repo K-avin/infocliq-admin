@@ -1,6 +1,6 @@
 @extends('layouts.app') @section('content')
 <div class="container px-6 mx-auto grid">
-  <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+  <h2 class="my-4 text-lg font-semibold text-gray-700 dark:text-gray-200">
     My Tasks
   </h2>
   {{-- add task --}}
@@ -32,19 +32,29 @@
           <div class="flex items-center">
             @if ($task->priority_level == 'high')
             <div class="p-2 mr-2 text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
               @elseif ($task->priority_level == 'medium')
               <div class="p-2 mr-2 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
                 @elseif ($task->priority_level == 'low')
-                <div
-                  class="p-2 mr-2 text-yellow-400 bg-yellow-100 rounded-full dark:text-yellow-100 dark:bg-yellow-400">
-                  @endif
+                <div class="p-2 mr-2 text-yellow-400 bg-yellow-100 rounded-full dark:text-yellow-100 dark:bg-yellow-400">                  
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
                       d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
                       clip-rule="evenodd" />
                   </svg>
                 </div>
-
+                @endif
                 {{-- <span
                   class="capitalize inline align-top float-right py-1-dev-span text-sm font-small leading-tight rounded-md text-purple-700 bg-purple-100 dark:bg-purple-700 dark:text-purple-100">OT</span>
                 --}}
@@ -172,20 +182,15 @@
                   </span>
 
                   @if ($task->status == 'completed')
-                  <span
-                    class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">Completed</span>
+                  <span class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100">Completed</span>
                   @elseif ($task->status == 'pending')
-                  <span
-                    class="capitalize inline  rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-orange-700 bg-orange-100 dark:bg-orange-500 dark:text-orange-100">{{$task->status}}</span>
+                  <span class="capitalize inline  rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-orange-700 bg-orange-100 dark:bg-orange-500 dark:text-orange-100">{{$task->status}}</span>
                   @elseif ($task->status == 'on hold')
-                  <span
-                    class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-blue-700 bg-blue-100 dark:bg-blue-500 dark:text-blue-100">{{$task->status}}</span>
+                  <span class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-blue-700 bg-blue-100 dark:bg-blue-500 dark:text-blue-100">{{$task->status}}</span>
                   @elseif ($task->status == 'canceled')
-                  <span
-                    class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-red-700 bg-red-100 dark:bg-red-600 dark:text-red-100">{{$task->status}}</span>
+                  <span class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-red-700 bg-red-100 dark:bg-red-600 dark:text-red-100">{{$task->status}}</span>
                   @elseif ($task->status == 'start')
-                  <span
-                    class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-purple-700 bg-purple-100 dark:bg-purple-100 dark:text-purple-100">{{$task->status}}</span>
+                  <span class="capitalize inline rounded-md align-top float-right px-2 py-1-dev-span text-sm font-small leading-tight text-purple-700 bg-purple-100 dark:bg-purple-100 dark:text-purple-100">{{$task->status}}</span>
                   @endif
               </p>
             </div>

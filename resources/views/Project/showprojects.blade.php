@@ -2,7 +2,7 @@
 @section('content')
 <div class="container px-6 mx-auto grid">
     <h2
-      class="my-6 text-2md font-semibold text-gray-700 dark:text-gray-200"
+      class="my-4 text-lg font-semibold text-gray-700 dark:text-gray-200"
     >
       All Projects
     </h2>

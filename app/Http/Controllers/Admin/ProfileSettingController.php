@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class ProfileSettingController extends Controller
 {
-    public function profileSetting()
+    public function profile()
     {
-        return view('Admin/Profile/profilesetting');
+        return view('Profile/profilesetting');
     }
+    
 }

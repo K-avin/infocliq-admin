@@ -25,9 +25,10 @@ Route::get('manager/dashboard', [App\Http\Controllers\Admin\DashboardController:
 Route::get('manager/addtask', [App\Http\Controllers\Admin\TasksController::class, 'addTask'])->name('add.task');
 Route::post('manager/storetask', [App\Http\Controllers\Admin\TasksController::class, 'store'])->name('store.task');
 Route::get('manager/mytasks', [App\Http\Controllers\Admin\TasksController::class, 'showTasks'])->name('view.tasks');
+Route::get('manager', [App\Http\Controllers\Admin\TasksController::class, 'taskHome'])->name('home.manager');
 
 // Profile
-Route::get('manager/setting', [App\Http\Controllers\Admin\ProfileSettingController::class, 'profileSetting'])->name('view.profile-setting');
+Route::get('manager/profile', [App\Http\Controllers\Admin\ProfileSettingController::class, 'profile'])->name('view.profile');
 
 // Ticket
 Route::get('manager/addticket', [App\Http\Controllers\Admin\TicketController::class, 'addTicket'])->name('add.ticket');
@@ -35,6 +36,7 @@ Route::get('manager/tickets', [App\Http\Controllers\Admin\TicketController::clas
 
 // Module
 Route::get('manager/addmodule', [App\Http\Controllers\Admin\ModuleController::class, 'addModule'])->name('add.module');
+Route::post('manager/storemodule', [App\Http\Controllers\Admin\ModuleController::class, 'store'])->name('store.module');
 Route::get('manager/modules', [App\Http\Controllers\Admin\ModuleController::class, 'showModules'])->name('view.modules');
 
 // Project
