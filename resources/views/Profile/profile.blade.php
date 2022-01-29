@@ -11,24 +11,57 @@
                     </div>
 
                     <div class="image overflow-hidden">
-                        <img class="w-40 h-40 rounded-full mx-auto"  src="https://avatars.githubusercontent.com/u/19858893?v=4" alt="">                            
+                        <img class="w-40 h-40 rounded-full mx-auto"  src="{{asset('storage/'.$profileDetails->image)}}" alt="">                            
                     </div>
                     <div class="relative">
                         <div class="absolute bottom-4 right-16 h-5 w-5 border-2 border-white dark:border-gray-700 rounded-full bg-green-500 z-2"></div>
                     </div>
                     
-                    <h1 class="text-gray-800 font-semibold  dark:text-gray-200 text-center text-xl leading-8 mt-1 text-limite-line-1">Dev Kavin</h1>
+                    <h1 class="text-gray-800 font-semibold  dark:text-gray-200 text-center text-xl leading-8 mt-1 text-limite-line-1">{{ Auth::user()->name  }}</h1>
                     {{-- <i class="fas fa-badge-check text-xs text-blue-500"></i> --}}
                     {{-- <span class="rounded-lg px-1 border border-red-500 bg-red-50 text-red-600 position-tag">PM</span> --}}
-                    <h3 class="text-sm font-lg text-gray-600 dark:text-gray-400 text-limite-line-1 text-center">Associate Software Developer</h3>
-                        <p class="text-sm text-center text-gray-400 dark:text-gray-400 text-limite-line-1">Joined 2019-09-14</p>
+                    <h3 class="text-sm font-lg text-gray-600 dark:text-gray-400 text-limite-line-1 text-center">{{ $profileDetails->designation }}</h3>
+                        <p class="text-sm text-center text-gray-400 dark:text-gray-400 text-limite-line-1">Joined {{ $profileDetails->start_date }}</p>
+                        @if($achimentPoints->points >= 500)
                         <p class="text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
                               </svg>
-                            <span class="text-xs">123</span>
+                            <span class="text-xs text-gray-400 dark:text-gray-400">
+                                @if ($achimentPoints->points < 1)
+                                    0
+                                @else                                
+                                {{$achimentPoints->points}}</span>
+                                @endif
                         </p>
+                        @elseif ($achimentPoints->points >=1000)
+                        <p class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                              </svg>
+                            <span class="text-xs text-gray-400 dark:text-gray-400">
+                                @if ($achimentPoints->points < 1)
+                                    0
+                                @else                                
+                                {{$achimentPoints->points}}</span>
+                                @endif
+                        </p>
+                        @elseif ($achimentPoints->points < 500)
+                        <p class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-300 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                              </svg>
+                            <span class="text-xs text-gray-400 dark:text-gray-400">
+                                @if ($achimentPoints->points < 1)
+                                    0
+                                @else                                
+                                {{$achimentPoints->points}}</span>
+                                @endif
+                        </p>
+                        @endif
                         <div class="text-center mt-2 text-lg text-gray-600 dark:text-gray-400">
                             <a href="" class="mr-3"><i class="fab fa-instagram"></i></a>
                             <a href="" class="mr-3"><i class="fab fa-linkedin"></i></a>
@@ -96,37 +129,37 @@
                         <div class="grid md:grid-cols-1 text-sm">
                             <div class="grid grid-cols-2">
                                 <div class="px-2 py-2 font-semibold">First Name</div>
-                                <div class="px-2 py-2">Kabilraj</div>
+                                <div class="px-2 py-2">{{ $profileDetails->first_name }}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-2 py-2 font-semibold">Last Name</div>
-                                <div class="px-2 py-2">Selvanantham</div>
+                                <div class="px-2 py-2">{{ $profileDetails->last_name }}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-2 py-2 font-semibold">Gender</div>
-                                <div class="px-2 py-2">Male</div>
+                                <div class="px-2 py-2">{{ $profileDetails->gender }}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-2 py-2 font-semibold">Contact No.</div>
-                                <div class="px-2 py-2">+11 998001001</div>
+                                <div class="px-2 py-2">{{ $profileDetails->mobile_number }}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-2 py-2 font-semibold">Current Address</div>
-                                <div class="px-2 py-2">Beech Creek, PA, Pennsylvania</div>
+                                <div class="px-2 py-2">{{ $profileDetails->address }}, {{ $profileDetails->city }}, {{ $profileDetails->district }}</div>
                             </div>
                             <div class="grid grid-cols-2">
-                                <div class="px-2 py-2 font-semibold">Permanant Address</div>
-                                <div class="px-2 py-2">Arlington Heights, IL, Illinois</div>
+                                <div class="px-2 py-2 font-semibold">Department</div>
+                                <div class="px-2 py-2">{{ $profileDetails->department }}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-2 py-2 font-semibold">Email.</div>
                                 <div class="px-2 py-2">
-                                    <a class="hover:text-blue-800" href="mailto:">kabilraj050@gmail.com <i class="far fa-external-link text-xs"></i></a>
+                                    <a class="hover:text-blue-800" href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }} <i class="far fa-external-link text-xs"></i></a>
                                 </div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-2 py-1 font-semibold">Birthday</div>
-                                <div class="px-2 py-1">Sep 14, 1998</div>
+                                <div class="px-2 py-1">{{ $profileDetails->date_of_birth }}</div>
                             </div>
                         </div>
                     </div>

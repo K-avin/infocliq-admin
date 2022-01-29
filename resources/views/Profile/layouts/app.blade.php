@@ -173,7 +173,7 @@
                     <!-- Notification badge -->
                     <span
                       aria-hidden="true"
-                      class="animate-bounce absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"
+                      class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"
                     ></span>
                   </button>
                   <template x-if="isNotificationsMenuOpen">
@@ -196,27 +196,6 @@
                           >
                             13
                           </span>
-                        </a>
-                      </li>
-                      <li class="flex">
-                        <a
-                          class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                          href="#"
-                        >
-                          <span>Sales</span>
-                          <span
-                            class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600"
-                          >
-                            2
-                          </span>
-                        </a>
-                      </li>
-                      <li class="flex">
-                        <a
-                          class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                          href="#"
-                        >
-                          <span>Alerts</span>
                         </a>
                       </li>
                     </ul>
@@ -283,26 +262,20 @@
                         </a>
                       </li>
                       <li class="flex">
-                        <a
-                          class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                          href="#"
-                        >
-                          <svg
-                            class="w-4 h-4 mr-3"
-                            aria-hidden="true"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
+                        <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                          href="{{ route('logout') }}" onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                          <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path
-                              d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                            ></path>
+                              d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+                            </path>
                           </svg>
-                          <span>Log out</span>
+                          <span>{{ __('Logout') }}</span>
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                        </form>
                       </li>
                     </ul>
                   </template>

@@ -66,14 +66,24 @@
               type="text"/>
           </label>
 
-          <label class="block text-sm">
-            <span class="text-gray-700 dark:text-gray-400">Due Date</span>
-            <input
-              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-              placeholder="date"
-              type="date"
-              name="due_date"/>
-          </label>
+          <div class="grid gap-6 xl:grid-cols-2 mb-4"> 
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Start Date</span>
+              <input
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="date"
+                type="date"
+                name="start_date"/>
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Due Date</span>
+              <input
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="date"
+                type="date"
+                name="due_date"/>
+            </label>
+          </div>
         </div>
 
         <div class="grid gap-6 xl:grid-cols-2 mb-4"> 
@@ -110,6 +120,7 @@
         </div>      
 
         <div class="grid gap-6 xl:grid-cols-2">
+          <div class="grid gap-6 xl:grid-cols-2">
           <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Document Url</span>
             <input
@@ -118,21 +129,31 @@
               type="url"
               name="doc_link"/>
           </label>
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Project Logo</span>
+            <input
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              placeholder="enter the project document url"
+              type="file"
+              name="project_logo"/>
+          </label>
+
+          </div>
           <div class="text-sm">
             <span class="text-gray-700 dark:text-gray-400">
               Developers
             </span>
-            <div class="form-input">
+            <div class="form-input dark:bg-gray-700 dark:border-gray-600">
               <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
                 <input type="checkbox"
-                  class="text-gray-600 form-checkbox focus:border-gray-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  name="developers[]" value="Kabilraj" />
+                  class="text-gray-600 dark:bg-gray-700 form-checkbox focus:border-gray-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                  name="developers[]" value="1" />
                 <span class="ml-2 text-sm">Kabilraj</span>
               </label>
               <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
                 <input type="checkbox"
-                  class="text-gray-600 form-checkbox focus:border-gray-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  name="developers[]" value="Vinoyan" />
+                  class="text-gray-600 dark:bg-gray-700 form-checkbox focus:border-gray-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                  name="developers[]" value="2" />
                 <span class="ml-2 text-sm">Vinoyan</span>
               </label>
             </div>

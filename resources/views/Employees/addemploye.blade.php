@@ -2,10 +2,9 @@
 @section('content')
 <div class="container px-6 mx-auto grid">
   <h2 class="my-6 text-2md font-semibold text-gray-700 dark:text-gray-200">Add New Staff</h2>
-
+  <form action="{{route('store.employee')}}" method="post" enctype="multipart/form-data">
+    @csrf
   <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <form action="{{route('store.employee')}}" method="post" enctype="multipart/form-data">
-      @csrf
       {{-- Personal --}}
       <div class="personal-section mb-10">
         <p class="mb-3 mt-3 text-2md font-semibold text-gray-500 dark:text-gray-200">Personal Details</p>
@@ -36,7 +35,6 @@
               type="tel"
               name="nic" />
           </label>
-          <div class="grid gap-6 xl:grid-cols-2 mb-4">
           <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Mobile Number</span>
             <input
@@ -45,15 +43,6 @@
               type="tel"
               name="mobile"/>
           </label>
-          <label class="block text-sm">
-            <span class="text-gray-700 dark:text-gray-400">Email Address</span>
-            <input
-              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-gray-100 focus:outline-none focus:shadow-outline-gray dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-              placeholder="Enter the email address"
-              type="email"
-              name="email"/>
-          </label>
-          </div>
         </div>
         <div class="grid gap-6 xl:grid-cols-2 mb-4">
           <div class="grid gap-6 xl:grid-cols-3">
@@ -268,7 +257,7 @@
         </div>
       </div>
 
-      <div class="flex mt-8 mb-2 flex-col flex-wrap space-y-2 md:flex-row md:items-end md:space-x-4">
+      {{-- <div class="flex mt-8 mb-2 flex-col flex-wrap space-y-2 md:flex-row md:items-end md:space-x-4">
         <!-- Divs are used just to display the examples. Use only the button. -->
         <div>
           <button
@@ -293,14 +282,13 @@
             </svg>
           </button>
         </div>
-      </div>
-    </form>
+      </div> --}}
   </div>
 
   <div class="items-center p-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
     {{-- User Account --}}
-    <form method="post" action="{{ route('register') }}">
-      @csrf
+    {{-- <form method="post" action="{{ route('register') }}"> --}}
+      {{-- @csrf --}}
       <div class="bank-section ">
         <p class="mb-3 mt-3 text-2md font-semibold text-gray-500 dark:text-gray-200">User Account Details </p>
         <div class="grid gap-6 xl:grid-cols-2 mb-4">
@@ -414,9 +402,8 @@
           </button>
         </div>
       </div>
-    </form>
   </div>
 
-
+</form>
 </div>
 @endsection

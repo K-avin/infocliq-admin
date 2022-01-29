@@ -35,6 +35,11 @@ class ProjectController extends Controller
     {
         $input = $request->all();
 
+        if ($request->hasFile('image')) {
+            $filename = $request->image->getClientOriginalName();
+            $image_path = $request->image->storeAs('logoProject', $filename, 'public');
+        }
+
         Project::create([
             'client_name'           =>  $input['client_name'],
             'mobile'                =>  $input['mobile_number'],
@@ -42,11 +47,13 @@ class ProjectController extends Controller
             'address'               =>  $input['address'],
             'client_description'    =>  $input['client_description'],
             'project_name'          =>  $input['project_name'],
+            'start_date'            =>  $input['start_date'],
             'due_date'              =>  $input['due_date'],
             'total_cost'            =>  $input['total_cost'],
             'total_hours'           =>  $input['total_hours'],
             'status'                =>  $input['status'],
             'doc_link'              =>  $input['doc_link'],
+            'project_logo'          =>  $image_path,
             'developers'            =>  json_encode($input['developers']),
             'project_description'   =>  $input['project_description'],
         ]);

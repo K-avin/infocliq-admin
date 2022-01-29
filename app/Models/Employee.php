@@ -22,7 +22,6 @@ class Employee extends Model
         'address',
         'gender',
         'image',
-        'email',
         'status',
         'date_of_birth',
         'designation',

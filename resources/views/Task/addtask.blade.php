@@ -112,9 +112,9 @@
               <select name="priority"
                     class="block w-full mt-1 text-sm dark:text-gray-200 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                     <option disabled selected>Choose a level</option>
-                    <option>High</option>
-                    <option>Medium</option>
-                    <option>Low</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
                 </select>
             </label>
             <div class="grid gap-6 xl:grid-cols-2"> 

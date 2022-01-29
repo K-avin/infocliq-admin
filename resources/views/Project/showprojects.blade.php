@@ -24,22 +24,16 @@
         <div class="m-1">
           <p class="mb-2 text-md font-medium text-gray-600 dark:text-gray-400">Project : {{$project->project_name}}
             <span class="text-sm cursor-pointer text-gray-500 font-mono inline px-2 align-top float-right active:text-red-500 hover:text-red-500 dark:text-red-400 focus:outline-none focus:shadow-outline-red">
+                <img class="w-5 h-5 rounded-full" src="{{asset('storage/'.$project->project_logo)}}" alt="">
+            </span>
+            <span class="text-sm cursor-pointer text-gray-500 font-mono inline px-2 align-top float-right active:text-red-500 hover:text-red-500 dark:text-red-400 focus:outline-none focus:shadow-outline-red">
                 <a href="{{url('manager/project/details/'.$project->id)}}">
-                    <svg
-                    class="w-5 h-5"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                <path class="animate-pulse" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      </svg>
             </a>
             </span>
+
            </p>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-s-1 mr-2">:</span>06</p>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Ongoing Modules<span class="mg-s-2 mr-2">:</span>04</p>
@@ -53,12 +47,16 @@
                 @foreach ($developers as $developer)
                 <span class="px-2 py-1-dev-span text-sm font-small leading-tight text-gray-500 bg-gray-100 rounded-full dark:text-gray-200 dark:bg-gray-700">{{$developer}}</span>
                 @endforeach
+                {{-- <div class="flex -space-x-2 overflow-hidden">                    
+                    <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://avatars.githubusercontent.com/u/19858893?v=4" alt="">                    
+                </div> --}}
+               
             </div>
         
             <p class="text-md font-medium text-gray-600 dark:text-gray-400">
                 @if ($project->status == 'start')
                     <span class="text-purple-600 cursor-pointer inline px-2 align-top float-left py-1-dev-span text-sm font-small">
-                        <i class="far fa-play"></i>
+                        <i data-id='{!! $project->status !!}' class="far fa-play"></i>
                     </span>
                 @else
                 <span class="inline px-2 cursor-pointer align-top float-left py-1-dev-span text-sm font-small">

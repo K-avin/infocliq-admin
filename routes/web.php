@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 Auth::routes();
 
-// Dashboard
+Route::group(['middleware' => 'auth'], function (){
+    // Dashboard
 Route::get('manager/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'showDashboard'])->name('view.dashboard');
 
 // Task
@@ -52,8 +53,8 @@ Route::get('manager/project/delete/{id}', [App\Http\Controllers\Admin\ProjectCon
 Route::get('manager/addemployee', [App\Http\Controllers\Admin\EmployeesController::class, 'addEmployee'])->name('add.employee');
 Route::post('manager/storeemployee', [App\Http\Controllers\Admin\EmployeesController::class, 'store'])->name('store.employee');
 Route::get('manager/employees', [App\Http\Controllers\Admin\EmployeesController::class, 'showEmployees'])->name('view.employees');
-
-
-
+   
+// Index
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 

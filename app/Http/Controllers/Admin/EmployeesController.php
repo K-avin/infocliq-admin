@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeesController extends Controller
 {
@@ -49,8 +51,7 @@ class EmployeesController extends Controller
             'status'        =>  $input['status'],
             'date_of_birth' =>  $input['dob'],
             'image'         =>  $image_path,
-            'email'         =>  $input['email'],
-            'designation'      =>  $input['designation'],
+            'designation'   =>  $input['designation'],
             'department'    =>  $input['department'],
             'employment_status' =>  $input['estatus'],
             'start_date'    =>  $input['startdate'],
@@ -59,6 +60,13 @@ class EmployeesController extends Controller
             'branch'        =>  $input['branch'],
             'account_name'  =>  $input['accountname'],
             'account_number'=>  $input['accountnumber'],
+        ]);
+        User::create([
+            'employee'      => $input['nic'],
+            'name'          => $input['name'],
+            'email'         => $input['email'],
+            'role'          => $input['role'],
+            'password'      => Hash::make($input['password']),
         ]);
 
         return back()->with('success', 'Staff has successfully ceeated!');

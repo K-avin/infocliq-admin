@@ -30,7 +30,7 @@
         <div class="absolute bg-gradient-to-b from-red-600 to-red-600 opacity-80 inset-0 z-0"></div>
         <div class="w-full  max-w-md z-10">
             <div>
-                <h1 class="text-white font-bold text-4xl font-sans">DoTache</h1>
+                <h1 class="text-white font-bold text-4xl font-sans">DoTâche</h1>
                 <p class="text-white mt-1">This is our project management software</p>
                 <button type="submit" class="block w-28 bg-white text-red-500 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button>
               </div>

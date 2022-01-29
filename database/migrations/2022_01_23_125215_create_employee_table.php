@@ -24,8 +24,7 @@ class CreateEmployeeTable extends Migration
             $table->string('city');
             $table->string('address');
             $table->string('gender');
-            $table->string('image');      
-            $table->string('email')->unique();      
+            $table->string('image');           
             $table->string('status');
             $table->string('date_of_birth');
             $table->string('designation');

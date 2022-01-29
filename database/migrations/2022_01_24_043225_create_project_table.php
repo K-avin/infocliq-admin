@@ -21,11 +21,13 @@ class CreateProjectTable extends Migration
             $table->string('address');
             $table->text('client_description');
             $table->string('project_name');
+            $table->string('start_date');
             $table->string('due_date');
             $table->decimal('total_cost',7,2);
             $table->string('total_hours');
             $table->string('status')->default('pending');
             $table->string('doc_link');
+            $table->string('project_logo');
             $table->json('developers');
             $table->string('project_description');       
             $table->timestamps();
