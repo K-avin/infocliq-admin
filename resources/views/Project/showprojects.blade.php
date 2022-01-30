@@ -59,9 +59,16 @@
                         <i data-id='{!! $project->status !!}' class="far fa-play"></i>
                     </span>
                 @else
-                <span class="inline px-2 cursor-pointer align-top float-left py-1-dev-span text-sm font-small">
-                    <i class="far fa-play"></i>
-                </span>
+                {{-- <form action="{{url('manager/project/statusupdate/'.$project->id)}}" method="post"> --}}
+                    {{-- @csrf --}}
+                    {{-- <input type="text" value="start" name="status" style="display: none"> --}}
+
+                    <a onclick="dosomething(1)">
+                        <span class="inline  px-2 cursor-pointer align-top float-left py-1-dev-span text-sm font-small">
+                            <i class="far fa-play"></i>
+                        </span>
+                    </a>
+                {{-- </form> --}}
                 @endif
 
                 @if ($project->status == 'on hold')
@@ -99,6 +106,38 @@
         </div>
       </div>          
       @endforeach
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script>
+          
+          function dosomething(id){
+                    console.log(id);
+                    $.ajax({
+                      type : "GET",
+                      dataType : "json",
+                      url : "manager/project/statusupdate",
+                      data:{'status': 'start', 'id': id},
+                      success: function(data){
+                          console.log(data.success);
+                      }                      
+                    })
+}
+        //   $(function(){
+        //       $('.start-status').click(function(){
+        //         //   var status = $(this).data('start');
+        //           var project_id = $(this).value('id');
+        //           $.ajax({
+        //               type : "GET",
+        //               dataType : "json",
+        //               url : "manager/project/statusupdate",
+        //               data:{'status': 'start', 'id': project_id},
+        //               success: function(data){
+        //                   console.log(data.success);
+        //               }                      
+        //           })
+
+        //       })
+        //   });
+      </script>
     </div>
 </div>
 @endsection

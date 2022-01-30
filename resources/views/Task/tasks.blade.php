@@ -91,7 +91,13 @@
               <p
                 class="mb-1 @if ($task->status == 'canceled') line-through @endif text-md font-medium text-gray-600 dark:text-gray-400 text-limite-line-1">
                 Project <span class="mg-st-1 mr-2">:</span>
-                {{$task->project}}</p>
+                {{-- @foreach ($projects as $project)
+                    
+                @if ($task->project_id == $project->id)
+                {{$project->project_name}}                  
+                @endif
+                @endforeach --}}
+              </p>
               <p
                 class="mb-1 @if ($task->status == 'canceled') line-through @endif text-sm  text-gray-600 dark:text-gray-400 text-limite-line-1">
                 Modules<span class="mg-st-2 mr-2">:</span>{{$task->module}}</p>

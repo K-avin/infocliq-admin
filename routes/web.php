@@ -47,6 +47,7 @@ Route::get('manager/projects', [App\Http\Controllers\Admin\ProjectController::cl
 Route::get('manager/project/details/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'showDetails'])->name('view.projectsingleview');
 Route::get('manager/project/edit/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'editProject']);
 Route::post('manager/project/update/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'update']);
+Route::post('manager/project/statusupdate/{status}/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'updateStatus']);
 Route::get('manager/project/delete/{id}', [App\Http\Controllers\Admin\ProjectController::class, 'destroy']);
 
 // Employees

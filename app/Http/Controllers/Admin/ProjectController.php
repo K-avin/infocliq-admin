@@ -35,9 +35,9 @@ class ProjectController extends Controller
     {
         $input = $request->all();
 
-        if ($request->hasFile('image')) {
-            $filename = $request->image->getClientOriginalName();
-            $image_path = $request->image->storeAs('logoProject', $filename, 'public');
+        if ($request->hasFile('project_logo')) {
+            $filename = $request->project_logo->getClientOriginalName();
+            $image_path = $request->project_logo->storeAs('logoProject', $filename, 'public');
         }
 
         Project::create([
@@ -71,6 +71,14 @@ class ProjectController extends Controller
         $projectUpdate->update($request->all());
 
         return back()->with('success', 'project has successfully ceeated!');
+    }
+
+    public function updateStatus(Request $request){
+        $statusUpdate = Project::find($id);
+        $statusUpdate->status = $request->status;
+        $statusUpdate->save();
+
+        return back()->with('success', 'project has successfully started!');
     }
 
     /**

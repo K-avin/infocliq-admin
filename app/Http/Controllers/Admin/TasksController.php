@@ -19,17 +19,12 @@ class TasksController extends Controller
 
     public function showTasks()
     {               
-    //    $tasks = DB::table('project')->select('*')->join('task','project.id','=','task.project' )->get();
-    $tasks = Task::all();
-    // $projects = Project::select('id','project_name')->get();
-    // $i = 0;
-    $projects = Project::select('id','project_name')->get();
-   
-    // foreach($projects as $project){
-    //     $p_n[] = $project;
-    //     // $i++;
-    // };
-    // dd($p_n);
+    //    $tasks = DB::table('task')->select('*')->join('project','project.id','task.project_id' )->get();
+        $tasks = Task::all();
+
+        $projects = Project::select('id','project_name')->get();
+
+        // dd($tasks);
         return view('Task/tasks', compact('tasks'));
     }
 
