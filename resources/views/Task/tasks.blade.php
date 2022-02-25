@@ -160,17 +160,17 @@
                     <i class="fal fa-ban"></i>
                   </span>
                   @endif
-                  @if($task->note == 'null')
+                  {{-- @if($task->note == 'null')
                   <span
                     class="inline hover:text-blue-600 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
                     <i class="fal fa-comment-alt-lines"></i>
                   </span>
                   @else
-                  <span @click="openModal"
+                  <span @click="openModal" onclick="{{$task->id }}"
                     class="inline text-blue-500 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
                     <i class="fas fa-comment-alt-lines"></i>
                   </span>
-                  @endif
+                  @endif --}}
 
                   <span
                     class="inline text-blue-500 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
@@ -202,7 +202,7 @@
             </div>
           </div>
           @endforeach
-          @include('Task.components.notemodel')
+          {{-- @include('Task.components.notemodel') --}}
           <script>
             setTimeout(() => {
               sketole()

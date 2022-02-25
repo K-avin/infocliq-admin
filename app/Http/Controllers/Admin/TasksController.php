@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Project;
+use Auth;
 use DB;
+use Brian2694\Toastr\Facades\Toastr;
 
 
 class TasksController extends Controller
@@ -20,7 +22,12 @@ class TasksController extends Controller
     public function showTasks()
     {               
     //    $tasks = DB::table('task')->select('*')->join('project','project.id','task.project_id' )->get();
-        $tasks = Task::all();
+        // $tasks = Task::all();
+        $tasks = DB::table('task')->select('*')->where('assign_to', '=', Auth::user()->id)->orderBy('updated_at', 'desc')->get();
+
+        // $assin = DB::table('employee')->select('image')->where('id', '=', $tasks->assign)->get();
+
+        // dd($assin);
 
         $projects = Project::select('id','project_name')->get();
 
@@ -69,6 +76,16 @@ class TasksController extends Controller
             'attachment'            => $file_path, 
         ]);
 
-        return back()->with('success', 'Task has successfully ceeated!');
+        return back()->with(Toastr::success('Task has successfully created!','Success'));
+        
+    }
+
+
+    public function noteUpdate(Request $request){
+        $statusUpdate = Task::find($id);
+        $statusUpdate->note = $request->note;
+        $statusUpdate->save();
+
+        return back()->with('success', 'Note has successfully update!');
     }
 }

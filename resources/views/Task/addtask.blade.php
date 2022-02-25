@@ -4,6 +4,7 @@
     <h2 class="my-6 text-2md font-semibold text-gray-700 dark:text-gray-200">Add New Task</h2>
 
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+      {!! Toastr::message() !!}
       <form action="{{route('store.task')}}" method="post" enctype="multipart/form-data">
         @csrf
         {{-- Task form --}}

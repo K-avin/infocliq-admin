@@ -12,18 +12,18 @@
       role="dialog" id="modal">
       <!-- Remove header if you don't want a close icon. Use modal body to place modal tile. -->
       <div class="items-center justify-between h-40">
-        <form action="">
+        <form action="{{route('update.note')}}" method="post" enctype="multipart/form-data">
             <div class=" items-center">
                 <div class="flex flex-col ml-3">
                   <div class="font-medium leading-none dark:text-gray-200"><i class="fal fa-pen inline text-sm"></i> Please note about this task !</div>
                   <label class="block mt-4 text-md">
                       <textarea
                         class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        rows="3" name="description" placeholder="Enter some descriptions about client"></textarea>
+                        rows="3"  name="note" placeholder="Enter some descriptions about client">{{$task->note}}</textarea>
                     </label>
                 </div>
             </div>
-            <button  class="flex-no-shrink bg-red-500 dark:bg-red-600 mt-2  px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider text-white rounded-md">Note</button>
+            <button type="submit"  class="flex-no-shrink bg-red-500 dark:bg-red-600 mt-2  px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider text-white rounded-md">Note</button>
         </form>
       </div>
     </div>

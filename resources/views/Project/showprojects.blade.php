@@ -62,8 +62,8 @@
                 {{-- <form action="{{url('manager/project/statusupdate/'.$project->id)}}" method="post"> --}}
                     {{-- @csrf --}}
                     {{-- <input type="text" value="start" name="status" style="display: none"> --}}
-
-                    <a onclick="dosomething(1)">
+<span></span>
+                    <a onclick="dosomething('{{ $project->id }}')">
                         <span class="inline  px-2 cursor-pointer align-top float-left py-1-dev-span text-sm font-small">
                             <i class="far fa-play"></i>
                         </span>
@@ -111,11 +111,12 @@
           
           function dosomething(id){
                     console.log(id);
+                    status = 'start';
                     $.ajax({
-                      type : "GET",
+                      type : "POST",
                       dataType : "json",
-                      url : "manager/project/statusupdate",
-                      data:{'status': 'start', 'id': id},
+                      url : "manager/project/statusupdate/"+id,
+                    //   data:{'status': 'start', 'id': id},
                       success: function(data){
                           console.log(data.success);
                       }                      
