@@ -53,7 +53,7 @@
           <span class="text-gray-700 dark:text-gray-400">Description</span>
           <textarea
             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-            rows="3" value="{{$project->client_description}}" name="client_description" placeholder="Enter some descriptions about client"></textarea>
+            rows="3" name="client_description" placeholder="Enter some descriptions about client">{{$project->client_description}}</textarea>
         </label>
         </div>
 
@@ -127,23 +127,25 @@
               value="{{$project->doc_link}}"
               name="doc_link"/>
           </label>
+            <?php
+                $developers = json_decode($project->developers,true)
+            ?>
+            
+            
+
           <div class="text-sm">
             <span class="text-gray-700 dark:text-gray-400">
               Developers
             </span>
-            <div class="form-input">
+            <div class="form-input dark:bg-gray-700 dark:border-gray-600">              
+              @foreach ($dev as $devs)
               <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
-                <input type="checkbox"
+                <input type="checkbox"             
                   class="text-gray-600 form-checkbox focus:border-gray-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  name="developers[]" value="Kabilraj" />
-                <span class="ml-2 text-sm">Kabilraj</span>
+                  name="developers[]" value="{{$devs->first_name}}" />
+                <span class="ml-2 text-sm">{{$devs->first_name}}</span>
               </label>
-              <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                <input type="checkbox"
-                  class="text-gray-600 form-checkbox focus:border-gray-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  name="developers[]" value="Vinoyan" />
-                <span class="ml-2 text-sm">Vinoyan</span>
-              </label>
+              @endforeach
             </div>
           </div>        
         </div>
@@ -153,7 +155,7 @@
           <span class="text-gray-700 dark:text-gray-400">Project Description</span>
           <textarea
             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-gray-100 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-            rows="3" value="{{$project->project_description}}" placeholder="Enter the project descriptions" name="project_description"></textarea>
+            rows="3" placeholder="Enter the project descriptions" name="project_description">{{$project->project_description}}</textarea>
         </label>
         </div>
 

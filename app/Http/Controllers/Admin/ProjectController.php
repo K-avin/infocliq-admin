@@ -5,18 +5,36 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Employee;
+use App\Models\Module;
+use DB;
 
 class ProjectController extends Controller
 {
     public function addProject()
     {
-        return view('Project/addproject');
+        $developers = Employee::where('role','=', 'developer')->get();
+// dd($developers);
+        return view('Project/addproject',compact('developers'));
     }
     public function showProjects()
     {
         $projects = Project::all();
-        // dd($projects);
-        return view('Project/showprojects', compact('projects'));
+
+        $all = DB::table('project')
+        ->select('*')
+        ->join('module','module.projectId','=','project.id')
+        ->get();
+        // foreach ($projects as $project){
+        //     $modules = Module::where('projectId','=', $project->id)->get()->count();
+
+        //     dd($modules);
+        // }
+        
+
+        dd($all);
+
+        return view('Project/showprojects', compact('projects','modules'));
     }
     public function showDetails($id)
     {
@@ -63,7 +81,8 @@ class ProjectController extends Controller
 
     public function editProject($id){
         $project = Project::find($id);
-        return view('Project/edit', compact('project'));
+        $dev = Employee::where('role','=', 'developer')->get();
+        return view('Project/edit', compact('project','dev'));
     }
 
     public function update(Request $request, $id){

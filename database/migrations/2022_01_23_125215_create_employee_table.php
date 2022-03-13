@@ -36,6 +36,7 @@ class CreateEmployeeTable extends Migration
             $table->string('branch');
             $table->string('account_name');
             $table->string('account_number')->unique();
+            $table->string('role');
             $table->timestamps();
         });
     }

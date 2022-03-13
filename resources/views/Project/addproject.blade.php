@@ -144,18 +144,14 @@
               Developers
             </span>
             <div class="form-input dark:bg-gray-700 dark:border-gray-600">
+              @foreach ($developers as $developer )
               <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
                 <input type="checkbox"
                   class="text-gray-600 dark:bg-gray-700 form-checkbox focus:border-gray-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  name="developers[]" value="1" />
-                <span class="ml-2 text-sm">Kabilraj</span>
-              </label>
-              <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                <input type="checkbox"
-                  class="text-gray-600 dark:bg-gray-700 form-checkbox focus:border-gray-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  name="developers[]" value="2" />
-                <span class="ml-2 text-sm">Vinoyan</span>
-              </label>
+                  name="developers[]" value="{{$developer->first_name}}" />
+                <span class="ml-2 text-sm">{{$developer->first_name}}</span>
+              </label> 
+              @endforeach             
             </div>
           </div>        
         </div>

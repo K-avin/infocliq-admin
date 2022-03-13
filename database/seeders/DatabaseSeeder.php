@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             'branch'        => 'vavuniya main branch',
             'account_name'  => 'Kabilraj Selvanantham',
             'account_number'=> '00808787',
+            'role'          => 'developer',
             'created_at' => '2022-01-24 02:35:56',
             'updated_at' => '2022-01-24 02:35:56',
         ]);

@@ -35,7 +35,18 @@
             </span>
 
            </p>
-            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-s-1 mr-2">:</span>06</p>
+           <?php
+           $count = DB::table('module')->get();
+           ?>
+            <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-s-1 mr-2">:</span>
+                @foreach ($count as $counts)                    
+                
+                {{-- @if ($project->id == $count->projectId) --}}
+                {{$counts->projectId}}
+                {{-- @endif --}}
+                @endforeach
+                
+            </p>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Ongoing Modules<span class="mg-s-2 mr-2">:</span>04</p>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Deadline<span class="mg-s-3 mr-2">:</span>{{$project->due_date}}</p>
             

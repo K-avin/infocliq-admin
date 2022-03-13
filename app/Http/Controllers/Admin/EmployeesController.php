@@ -60,6 +60,7 @@ class EmployeesController extends Controller
             'branch'        =>  $input['branch'],
             'account_name'  =>  $input['accountname'],
             'account_number'=>  $input['accountnumber'],
+            'role'          =>  $input['role'],
         ]);
         User::create([
             'employee'      => $input['nic'],
