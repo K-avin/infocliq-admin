@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Employee;
 use App\Models\Module;
+use App\Models\Task;
+use Brian2694\Toastr\Facades\Toastr;
 use DB;
 
 class ProjectController extends Controller
@@ -21,26 +23,46 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
-        $all = DB::table('project')
-        ->select('*')
-        ->join('module','module.projectId','=','project.id')
-        ->get();
-        // foreach ($projects as $project){
-        //     $modules = Module::where('projectId','=', $project->id)->get()->count();
+        // $modules = DB::table('project')
+        // ->select('*')
+        // ->join('module','module.projectId','=','project.id')
+        // ->get();
 
-        //     dd($modules);
-        // }
+        // dd($modules);
+
+        $allModules = Module::all();
+
+        foreach ($projects as $project){
+           $countById = count(Module::where('projectId','=', $project->id)->get());
+        
+         $modules[] = 
+         [
+             'moduleCount' => $countById,
+             'projectId'   => $project->id
+        ];
+
+                //   $allModules = json_decode(json_encode($modules),true);
+    }
+
+        // dd($modules);
+
+        // $moduleCount = count($modules);
+        // dd($moduleCount);
         
 
-        dd($all);
+        // dd($all);
 
-        return view('Project/showprojects', compact('projects','modules'));
+        return view('Project/showprojects', compact('projects','modules','allModules'));
     }
     public function showDetails($id)
     {
         $project = Project::find($id);
-        // dd($project);
-        return view('Project/singleview', compact('project'));
+
+        $modules = Module::all();
+
+        $tasks = Task::all();
+        // dd($all);
+        return view('Project/singleview', compact('project','modules','tasks'));
     }
     
     /**
@@ -57,6 +79,7 @@ class ProjectController extends Controller
             $filename = $request->project_logo->getClientOriginalName();
             $image_path = $request->project_logo->storeAs('logoProject', $filename, 'public');
         }
+        
 
         Project::create([
             'client_name'           =>  $input['client_name'],
@@ -76,7 +99,7 @@ class ProjectController extends Controller
             'project_description'   =>  $input['project_description'],
         ]);
 
-        return back()->with('success', 'project has successfully ceeated!');
+        return back()->with(Toastr::success('Successfully Created!','Project'));
     }
 
     public function editProject($id){
@@ -89,15 +112,16 @@ class ProjectController extends Controller
         $projectUpdate = Project::find($id);
         $projectUpdate->update($request->all());
 
-        return back()->with('success', 'project has successfully ceeated!');
+        return back()->with(Toastr::success('Successfully update!','Project'));
     }
 
-    public function updateStatus(Request $request){
-        $statusUpdate = Project::find($id);
-        $statusUpdate->status = $request->status;
-        $statusUpdate->save();
-
-        return back()->with('success', 'project has successfully started!');
+    public function updateStatus(Request $request)
+    {
+        $projectStatus = Project::find($request->id);
+        $projectStatus->status = $request->status;
+        $projectStatus->save();
+  
+        return back()->with(Toastr::success('Successfully changed!','Status'));
     }
 
     /**
@@ -110,6 +134,7 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
         $project->delete();   
-        return back()->with('success', 'Project has successfully deleted!'); 
+        return back()->with(Toastr::success('Successfully deleted!','Project'));
+
     }
 }

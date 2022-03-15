@@ -298,6 +298,7 @@
             </div>
           </header>
       <main class="h-full overflow-y-auto">
+        {!! Toastr::message() !!}
         @yield('content')
       </main>
     </div>

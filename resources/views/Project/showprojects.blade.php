@@ -6,6 +6,7 @@
     >
       All Projects
     </h2>
+    
     {{-- add Projects --}}
     <a href="{{route('add.project')}}" class="dark:bg-gray-800 dark:text-gray-400 dark:border-gray-800 flex items-center justify-between p-4 mb-8 text-sm font-semibold bg-white text-gray-600 border-gray-200 border rounded-xl focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
@@ -36,15 +37,17 @@
 
            </p>
            <?php
-           $count = DB::table('module')->get();
+        //    $count = DB::table('module')->get();
            ?>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Total Modules<span class="mg-s-1 mr-2">:</span>
-                @foreach ($count as $counts)                    
+         12
+                {{-- @foreach ($modules as $module)                    
                 
-                {{-- @if ($project->id == $count->projectId) --}}
-                {{$counts->projectId}}
-                {{-- @endif --}}
-                @endforeach
+                @if ($project->id == $count->projectId)
+                
+                {{$module}}
+                @endif
+                @endforeach --}}
                 
             </p>
             <p class="mb-2 text-sm  text-gray-600 dark:text-gray-400">Ongoing Modules<span class="mg-s-2 mr-2">:</span>04</p>
@@ -70,26 +73,23 @@
                         <i data-id='{!! $project->status !!}' class="far fa-play"></i>
                     </span>
                 @else
-                {{-- <form action="{{url('manager/project/statusupdate/'.$project->id)}}" method="post"> --}}
-                    {{-- @csrf --}}
-                    {{-- <input type="text" value="start" name="status" style="display: none"> --}}
-<span></span>
-                    <a onclick="dosomething('{{ $project->id }}')">
+                    <a href="" onclick="dosomething('{{ $project->id }}')">
                         <span class="inline  px-2 cursor-pointer align-top float-left py-1-dev-span text-sm font-small">
                             <i class="far fa-play"></i>
                         </span>
                     </a>
-                {{-- </form> --}}
                 @endif
 
-                @if ($project->status == 'on hold')
+                @if ($project->status == 'on hold')                
                     <span class="text-blue-600 cursor-pointer inline px-2 align-top float-left py-1-dev-span text-sm font-small">
                         <i class="fal fa-pause"></i>
-                    </span>     
+                    </span>    
                 @else
+                <a href="" onclick="setStausHold('{{ $project->id }}')">
                     <span class="inline cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
                         <i class="fal fa-pause"></i>
-                    </span>                
+                    </span>      
+                </a>          
                 @endif
                     <a href="{{url('manager/project/delete/'.$project->id)}}">
                         <span class="inline hover:text-red-600 cursor-pointer px-2 align-top float-left py-1-dev-span text-sm font-small">
@@ -120,35 +120,40 @@
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
       <script>
           
+        //   Project Start Status
           function dosomething(id){
-                    console.log(id);
-                    status = 'start';
+                    
+                    var status = 'start';
+                    var id = id; 
+                    // console.log(status);
                     $.ajax({
-                      type : "POST",
+                      type : "GET",
                       dataType : "json",
-                      url : "manager/project/statusupdate/"+id,
-                    //   data:{'status': 'start', 'id': id},
+                      url : "/manager/project/statusupdate",
+                      data:{'status': status, 'id': id},
                       success: function(data){
                           console.log(data.success);
                       }                      
                     })
-}
-        //   $(function(){
-        //       $('.start-status').click(function(){
-        //         //   var status = $(this).data('start');
-        //           var project_id = $(this).value('id');
-        //           $.ajax({
-        //               type : "GET",
-        //               dataType : "json",
-        //               url : "manager/project/statusupdate",
-        //               data:{'status': 'start', 'id': project_id},
-        //               success: function(data){
-        //                   console.log(data.success);
-        //               }                      
-        //           })
+            }
 
-        //       })
-        //   });
+        //   Project Onhold Status
+        function setStausHold(id){
+                    
+                    var status = 'on hold';
+                    var id = id; 
+                    // console.log(status);
+                    $.ajax({
+                      type : "GET",
+                      dataType : "json",
+                      url : "/manager/project/statusupdate",
+                      data:{'status': status, 'id': id},
+                      success: function(data){
+                          console.log(data.success);
+                      }                      
+                    })
+            }
+
       </script>
     </div>
 </div>

@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
             'status'            => 'pending',
             'doc_link'          => 'https://docs.google.com/spreadsheets/d/1_N0fSaDhgRSqq7qVJgZzpGhjBJ6PVCi9JaY6zYS60pg/edit?usp=sharing',
             'project_logo'      => 'imgEmployee/JXLKigEP_400x400.jpg',
-            'developers'        => json_encode(["1", "2", "3"]),
+            'developers'        => json_encode(["kabilraj", "vinoyan", "thusanth"]),
             'project_description'=> 'This project infocliq project management system',
             ]);
             DB::table('project')->insert([
@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
             'status'            => 'pending',
             'doc_link'          => 'https://docs.google.com/spreadsheets/d/1_N0fSaDhgRSqq7qVJgZzpGhjBJ6PVCi9JaY6zYS60pg/edit?usp=sharing',
             'project_logo'      => 'imgEmployee/JXLKigEP_400x400.jpg',
-            'developers'        => json_encode(["1", "3", "2"]),
+            'developers'        => json_encode(["kabilraj", "vinoyan", "thusanth"]),
             'project_description'=> 'This project infocliq project management system',
             ]);
 
